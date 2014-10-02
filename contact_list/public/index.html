@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mariachis, Diablos, y Amigos</title>
+	<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
+	<script type="text/javascript" src="./javascripts/scripts.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./stylesheets/styles.css">
+
+</head>
+<body>
+	<div class="container">
+		<header>
+			<row>
+				<h1>Your mariachis, diablos, and amigos</h1>
+			</row>
+		</header>
+		<row>
+			<div class="col-md-3 list">
+				<h2>Mariachis</h2>
+				<ul class="mariachis" id="mariachis_ul"></ul>
+			</div>
+			<div class="col-md-3 list">
+				<h2>Diablos</h2>
+				<ul class="diablos" id="diablos_ul"></ul>
+			</div>
+			<div class="col-md-3 list">
+				<h2>Amigos</h2>
+				<ul class="amigos" id="amigos_ul"></ul>
+			</div>
+
+			<div class="col-md-3 new_contact">
+				<h4>New Contact Form</h4>
+				<form role="form" id="new_contact_form">
+				  <div class="form-group">
+				    <label for="newNameInput">Name</label>
+				    <input type="text" class="form-control" id="newNameInput" placeholder="Enter name">
+				  </div>
+				  <div class="form-group">
+				    <label for="newAgeInput">Age</label>
+				    <input type="number" class="form-control" id="newAgeInput" placeholder="Age">
+				  </div>
+				  <div class="form-group">
+				    <label for="newAddressInput">Address</label>
+				    <input type="text" class="form-control" id="newAddressInput" placeholder="Full address">
+				  </div>
+				  <div class="form-group">
+				    <label for="newPhoneInput">Phone</label>
+				    <input type="text" class="form-control" id="newPhoneInput" placeholder="Phone number">
+				  </div>
+				  <div class="form-group">
+				    <label for="newPicInput">Picture</label>
+				    <input type="text" class="form-control" id="newPicInput" placeholder="Pic url">
+				  </div>
+						<select name="newCategoryInput" class="form-control">
+							<option selected="selected">Select category</option>
+						  <option value="mariachis">Mariachi</option>
+						  <option value="diablos">Diablo</option>
+						  <option value="amigos">Amigo</option>
+						</select>
+
+
+				  <button type="submit" class="btn btn-default">Submit</button>
+				</form>
+
+
+
+
+
+			</div>
+		</row>
+
+
+
+
+
+
+
+
+	</div> 
+</body>
+</html>
