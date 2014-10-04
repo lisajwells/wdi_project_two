@@ -38,15 +38,42 @@ getNamesCategory("amigos");
 
 
 // to create a new contact and add to category list of names
-	$('#createContactButton').on("click", function(e){
+	var createContactButton = $('#createContactButton');
+
+	createContactButton.on("click", function(e){
 		e.preventDefault();
+		console.log("button clicked");
 		var category = $('#newContactDropdown').val();
+		for (c = 0; c < categories.length; c++){
+			if (category == categories[c]["name"]) {
+			category_id = categories[c]["id"];		
+			}}
 		var	$ul = $("#" + category + "_ul");
-		var contactName = $('#newNameInput').val();
-		console.log(contactName);
-		$ul.append("<li>adfsdfsadfsdfasf</li>")
-		// $ul.append("<li><span class='glyphicon glyphicon-star'></span> " + contactName + "</li>");
-	})
+		var name = $('#newNameInput').val();
+		var age = $('#newAgeInput').val();
+		var address = $('#newAddressInput').val();
+		var phone_number = $('#newPhoneInput').val();
+		var picture = $('#newPicInput').val();
+console.log(category);
+console.log(category_id);
+console.log(address);
+		$.ajax({
+			url: '/contacts',
+			type: 'POST',
+			data:{
+				name: name,
+				age: age,
+				address: address,
+				phone_number: phone_number,
+				picture: picture
+			}
+		}).done(function(data){
+			console.log(data);
+			// var newContact = 
+
+		})
+
+	});
 
 
 
