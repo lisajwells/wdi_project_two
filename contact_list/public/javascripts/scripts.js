@@ -65,7 +65,8 @@ console.log(address);
 				age: age,
 				address: address,
 				phone_number: phone_number,
-				picture: picture
+				picture: picture,
+				category_id: category_id
 			}
 		}).done(function(data){
 			console.log(data);
