@@ -8,45 +8,54 @@ var category_id;
 
 $(function(){
 
-// function getCategoryId(category) {
-// 	// loop through categories to get category id to match name
-// 	for (c = 0; c < categories.length; c++){
-// 		if (category == categories[c]["name"])
-// 			 var category_id = categories[c]["id"];		
-// 	}
-// 	return category_id
-// }
-
-// // call server for names by category
+// for initial page load
 function getNamesCategory(category) {
 		for (c = 0; c < categories.length; c++){
 			if (category == categories[c]["name"]) {
 			category_id = categories[c]["id"];		
-
-// **
 			}
 		}
 
-// getCategoryId(category);
-	// var category_id = 3;
-			console.log(category_id + ' is category_id');
 	$.ajax({
 		url: '/categories/' + category_id,
 		type: 'GET'
 	}).done(function(data){
 		
-// 		// iterate through data to pull out each name to make list
 		var contacts = data["contacts"];
-		$ul = $("#" + category + "_ul");
+		var $ul = $("#" + category + "_ul");
 		
 		for (i = 0; i < contacts.length; i++) {
 			var contactName = contacts[i]["name"];
-			$ul.append("<li>" + contactName + "</li>");
+			$ul.append("<li><span class='glyphicon glyphicon-star'></span> " + contactName + "</li>");
 		}
 	})
 };
 
+getNamesCategory("mariachis");
+getNamesCategory("diablos");
 getNamesCategory("amigos");
+/////
+
+
+// to create a new contact and add to category list of names
+	$('#createContactButton').on("click", function(e){
+		e.preventDefault();
+		var category = $('#newContactDropdown').val();
+		var	$ul = $("#" + category + "_ul");
+		var contactName = $('#newNameInput').val();
+		console.log(contactName);
+		$ul.append("<li>adfsdfsadfsdfasf</li>")
+		// $ul.append("<li><span class='glyphicon glyphicon-star'></span> " + contactName + "</li>");
+	})
+
+
+
+
+
+/////
+
+
+
 
 // function getContact() {
 // 	$.ajax({
