@@ -54,9 +54,7 @@ getNamesCategory("amigos");
 		var address = $('#newAddressInput').val();
 		var phone_number = $('#newPhoneInput').val();
 		var picture = $('#newPicInput').val();
-console.log(category);
-console.log(category_id);
-console.log(address);
+
 		$.ajax({
 			url: '/contacts',
 			type: 'POST',
@@ -70,8 +68,7 @@ console.log(address);
 			}
 		}).done(function(data){
 			console.log(data);
-			// var newContact = 
-
+			$ul.append("<li><span class='glyphicon glyphicon-star'></span> " + data["name"] + "</li>");
 		})
 
 	});
