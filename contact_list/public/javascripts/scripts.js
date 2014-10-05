@@ -51,6 +51,7 @@ getNamesCategory("amigos");
 		var phone_number = $('#newPhoneInput').val();
 		var picture = $('#newPicInput').val();
 
+		// don't create the contact unless it's right
 		validateForm();
 		if (isValid == false) {
 			alert('Please fill out all the fields');
@@ -75,7 +76,8 @@ getNamesCategory("amigos");
 		}
 	});
 /////
-	function getRandomPic() {
+
+	function getRandomPic(picture) {
 		$.ajax({
 		  url: 'http://api.randomuser.me/',
 		  dataType: 'json',
@@ -98,7 +100,7 @@ getNamesCategory("amigos");
 // 2) dropdown must have value other than "select a cat"
 // 3) picture will populate with random user if empty
 
-	function validateForm() {
+	function validateForm(picture) {
 		// this function will return whether a form 
 		// isValid, use it in a test to see whether or not 
 		// to add a contact to the db  
@@ -115,7 +117,6 @@ getNamesCategory("amigos");
 	  		notEmpty = false; 
 	  	}
 	  }
-	  	console.log(notEmpty + ' notEmpty')
 
 	  // to check that "select" has chosen category
 	  var dropdown = $('#newContactDropdown');
@@ -125,6 +126,7 @@ getNamesCategory("amigos");
 
 	  // to get a random picture if none given
 	  if ($('#newPicInput').val() === '') {
+	  	console.log('pic is empty');
 	  	getRandomPic();
 	  }
 
