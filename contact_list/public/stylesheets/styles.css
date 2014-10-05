@@ -29,6 +29,9 @@ ul {
 	padding-left: 0;
 	list-style-type: none;
 }
+li {
+	display: block;
+}
 
 .list {
 	background: rgba(255,255,255, 0.2);
@@ -38,7 +41,7 @@ ul {
 
 a.linkContact {
 	color: black;
-	width: 100%;
+	display: block;
 }
 
 a.linkContact:hover {

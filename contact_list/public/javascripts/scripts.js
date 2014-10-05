@@ -35,6 +35,13 @@ getNamesCategory("amigos");
 /////
 
 
+// event listener for <li>s to trigger contact view
+$('.contact_list').on("click", function(){
+	console.log('anchor clicked');
+
+
+});
+
 // to create a new contact and add to category list of names
 	var createContactButton = $('#createContactButton');
 
