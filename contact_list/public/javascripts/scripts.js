@@ -87,8 +87,9 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 				category_id: category_id
 			}
 		}).done(function(data){
-			console.log(data);
-			$ul.append("<li><span class='glyphicon glyphicon-star'></span> " + data["name"] + "</li>");
+
+			$ul.append("<li class='linkContact'><a href='#'><span class='glyphicon glyphicon-star'></span> " + data["name"] + "</a></li>");
+			
 		})
 		}
 	});
