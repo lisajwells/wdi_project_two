@@ -18,74 +18,92 @@
 </head>
 <body>
 	<div class="container">
+<!-- this section is for the initial view (index) -->
 	<div class="index_view">
 		<header>
 			<row>
-				<h1>Your Mariachis, Diablos, and Amigos</h1>
+				<h1>Everyone You Know</h1>
 			</row>
 		</header>
+
 		<row>
-			<div class="col-md-6 list">
-				<h2>Mariachis</h2>
+		<!-- the 3 lists -->
+			<div class="col-md-5 list">
+				<h2 class="center">Mariachis</h2>
 				<ul class="mariachis" id="mariachis_ul"></ul>
 			</div>
-			<div class="col-md-6 list">
-				<h2>Diablos</h2>
+			<div class="col-md-5 col-md-offset-1 list">
+				<h2 class="center">Diablos</h2>
 				<ul class="diablos" id="diablos_ul"></ul>
 			</div>
-			<div class="col-md-6 list">
-				<h2>Amigos</h2>
+			<div class="col-md-5 col-md-offset-1 list">
+				<h2 class="center">Amigos</h2>
 				<ul class="amigos" id="amigos_ul"></ul>
 			</div>
 
-			<div class="col-md-6 new_contact">
+		<!-- the new contact form -->
+			<div class="col-md-6 col-md-offset-1 new_contact">
 				<h4>New Contact Form</h4>
 				<form role="form" id="new_contact_form">
+				  
+					<!-- inputs -->
 				  <div class="form-group">
 				    <label for="newNameInput">Name</label>
-				    <input type="text" class="form-control" id="newNameInput" placeholder="Enter name">
+				    <input type="text" class="form-control newFormRequired" id="newNameInput" placeholder="Enter name">
 				  </div>
 				  <div class="form-group">
 				    <label for="newAgeInput">Age</label>
-				    <input type="number" class="form-control" id="newAgeInput" placeholder="Age">
+				    <input type="number" class="form-control newFormRequired" id="newAgeInput" placeholder="Age" required>
 				  </div>
 				  <div class="form-group">
 				    <label for="newAddressInput">Address</label>
-				    <input type="text" class="form-control" id="newAddressInput" placeholder="Full address">
+				    <input type="text" class="form-control newFormRequired" id="newAddressInput" placeholder="Full address">
 				  </div>
 				  <div class="form-group">
 				    <label for="newPhoneInput">Phone</label>
-				    <input type="text" class="form-control" id="newPhoneInput" placeholder="Phone number">
+				    <input type="text" class="form-control newFormRequired" id="newPhoneInput" placeholder="Phone number">
 				  </div>
 				  <div class="form-group">
 				    <label for="newPicInput">Picture</label>
-				    <input type="text" class="form-control" id="newPicInput" placeholder="Pic url">
+				    <input type="text" class="form-control newFormPic" id="newPicInput" placeholder="Pic url">
 				  </div>
-						<select name="newCategoryInput" id="newContactDropdown" class="form-control">
+
+					  <!-- dropdown for category choice -->
+						<select name="newCategoryInput" id="newContactDropdown" class="form-control newFormSelect">
 							<option selected="selected">Select category</option>
 						  <option value="mariachis">Mariachi</option>
 						  <option value="diablos">Diablo</option>
 						  <option value="amigos">Amigo</option>
 						</select>
 
-
-				  <button type="submit" id="createContactButton" class="btn btn-default">Submit</button>
+					  <button type="submit" id="createContactButton" class="btn btn-default">Submit</button>
 				</form>
-
-
-
-
 
 			</div>
 		</row>
 
-
-
-
-
-
-
 	</div>
+	<!-- end of index view -->
+
+	<!-- ^^^^^^ individual contact view -->
+	<div class="contact_view">
+		<header>
+			<row>
+				<h1>This one</h1>
+			</row>
+		</header>
+
+		<div class="contact_info"></div>
+		<row>
+			<p>all your info will go here</p>
+
+
+
+
+		</row>
+		</div>
+	<!-- ^^^^^^ end of indiviual contact view -->
 	</div> 
+	<!-- end of bootstrap container -->
 </body>
 </html>

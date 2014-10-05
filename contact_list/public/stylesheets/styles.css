@@ -3,15 +3,36 @@ body {
 	background-size: cover;
 }
 
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
 h1 {
 	color: maroon;
 	font-weight: bold;
 	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding-top: 30px;
+}
+
+h2 {
+	margin: 10px;
 }
 
 ul {
 	padding-left: 0;
 	list-style-type: none;
+}
+
+.list {
+	background: rgba(255,255,255, 0.2);
+	border-radius: 12px;
+	padding: 0 10px 0px 10px;
 }
 
 #createContactButton {
@@ -24,4 +45,14 @@ ul {
 
 select.form-control {
 	margin-top: 16px;
+}
+
+input.form-control {
+	height: 30px;
+	padding: 4px 12px;
+	font-size: 12px;
+}
+
+.contact_view {
+	display: none;
 }

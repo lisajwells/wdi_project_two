@@ -1,14 +1,11 @@
-// var allContacts = [{"id":8,"name":"Teodoro","age":62,"address":"Plazuela del Carmen Alto, Oaxaca, Oaxaca","phone_number":"678-456-7890","picture":"","category_id":1},{"id":6,"name":"Pepe","age":46,"address":"20 de Noviembre, Guanajuato, Morelia","phone_number":"666-456-6660","picture":"","category_id":2},{"id":7,"name":"Dona Estela","age":63,"address":"La Hacienda, Tlaxcala, Tlaxcala","phone_number":"453-555-7890","picture":"","category_id":3},{"id":4,"name":"Jose","age":33,"address":"42 Agua, Oaxaca, Oaxaca","phone_number":"123-555-7890","picture":"","category_id":1},{"id":9,"name":"Esperanze","age":26,"address":"6 de Diciembre 34, Morelia, Michuacan","phone_number":"666-776-8660","picture":"","category_id":2},{"id":5,"name":"Guadalupe","age":12,"address":"Benito Juarez 145, San Cristobal, Chiapas","phone_number":"123-456-7890","picture":"","category_id":3}];
-// var allCategories = [{"id":1,"name":"mariachis"},{"id":2,"name":"diablos"},{"id":3,"name":"amigos"}];
-// var mariachis = [{"id":8,"name":"Teodoro","age":62,"address":"Plazuela del Carmen Alto, Oaxaca, Oaxaca","phone_number":"678-456-7890","picture":"","category_id":1},{"id":4,"name":"Jose","age":33,"address":"42 Agua, Oaxaca, Oaxaca","phone_number":"123-555-7890","picture":"","category_id":1}];
-// var diablos = [{"id":6,"name":"Pepe","age":46,"address":"20 de Noviembre, Guanajuato, Morelia","phone_number":"666-456-6660","picture":"","category_id":2},{"id":9,"name":"Esperanze","age":26,"address":"6 de Diciembre 34, Morelia, Michuacan","phone_number":"666-776-8660","picture":"","category_id":2}];
-// var amigos = [{"id":7,"name":"Dona Estela","age":63,"address":"La Hacienda, Tlaxcala, Tlaxcala","phone_number":"453-555-7890","picture":"","category_id":3},{"id":5,"name":"Guadalupe","age":12,"address":"Benito Juarez 145, San Cristobal, Chiapas","phone_number":"123-456-7890","picture":"","category_id":3}];
 var categories = [{"id":1,"name":"mariachis"},{"id":2,"name":"diablos"},{"id":3,"name":"amigos"}];
 var category_id;
 
+// this is for onLoad
 $(function(){
 
-// for initial page load
+// view for initial page load
+// get names from db and build lists
 function getNamesCategory(category) {
 		for (c = 0; c < categories.length; c++){
 			if (category == categories[c]["name"]) {
@@ -20,7 +17,7 @@ function getNamesCategory(category) {
 		url: '/categories/' + category_id,
 		type: 'GET'
 	}).done(function(data){
-		
+
 		var contacts = data["contacts"];
 		var $ul = $("#" + category + "_ul");
 		
@@ -55,6 +52,12 @@ getNamesCategory("amigos");
 		var phone_number = $('#newPhoneInput').val();
 		var picture = $('#newPicInput').val();
 
+		validateForm();
+		if (isValid == false) {
+			console.log('isValid is false, try again')
+		}
+		else {
+
 		$.ajax({
 			url: '/contacts',
 			type: 'POST',
@@ -70,29 +73,42 @@ getNamesCategory("amigos");
 			console.log(data);
 			$ul.append("<li><span class='glyphicon glyphicon-star'></span> " + data["name"] + "</li>");
 		})
-
+		}
 	});
-
-
-
-
-
 /////
+	function getRandomPic() {
+		$.ajax({
+		  url: 'http://api.randomuser.me/',
+		  dataType: 'json',
+		  success: function(data){
+		    console.log(data);
+		  }
+		})
+	};
+// how to get a random thumbnail
+// data["results"][0]["user"]["picture"]["thumbnail"]
 
 
 
+// check new contact form for empty fields
+// ideally form should have 
+// 1) no empty fields for name, age, address, phone
+// 2) dropdown must have value other than "select a cat"
+// 3) picture will populate with random user if empty
 
-// function getContact() {
-// 	$.ajax({
-// 		url: 'contacts/:id',
-// 		type: 'GET'
-// 	})
-// }
+	function validateForm() {
+		// this function will return whether a form 
+		// isValid, use it in a test to see whether or not 
+		// to add a contact to the db  
+		var inputs = document.querySelectorAll(".newFormRequired");
+		isValid = true; 
+		for(var i=0; i < inputs.length; i++) {
+	  	var input = inputs[i];
+	  	if ( input.value === '' ) {
+	  		isValid = false; 
+	  	}
+	  }
+	  return isValid; 
+	}
 
-
-
-
-
-
-//// this is the end of onLoad
 });
