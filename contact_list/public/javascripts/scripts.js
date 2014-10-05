@@ -39,7 +39,6 @@ getNamesCategory("amigos");
 
 	createContactButton.on("click", function(e){
 		e.preventDefault();
-		console.log("button clicked");
 		var category = $('#newContactDropdown').val();
 		for (c = 0; c < categories.length; c++){
 			if (category == categories[c]["name"]) {
@@ -54,7 +53,7 @@ getNamesCategory("amigos");
 
 		validateForm();
 		if (isValid == false) {
-			console.log('isValid is false, try again')
+			alert('Please fill out all the fields');
 		}
 		else {
 
@@ -102,11 +101,25 @@ getNamesCategory("amigos");
 		// to add a contact to the db  
 		var inputs = document.querySelectorAll(".newFormRequired");
 		isValid = true; 
+		notEmpty = true;
+		categorySelected = true;
+		
+		// to check that required fields are not empty
 		for(var i=0; i < inputs.length; i++) {
 	  	var input = inputs[i];
 	  	if ( input.value === '' ) {
-	  		isValid = false; 
+	  		notEmpty = false; 
 	  	}
+	  }
+	  	console.log(notEmpty + ' notEmpty')
+	  // to check that "select" has chosen category
+	  var dropdown = $('#newContactDropdown');
+	  if (dropdown.val() == "Select category") {
+	  	categorySelected = false;
+	  }
+	  	console.log(categorySelected + ' categorySelected')
+	  if (notEmpty == false || categorySelected == false) {
+	  	isValid = false;
 	  }
 	  return isValid; 
 	}
