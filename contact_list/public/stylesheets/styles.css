@@ -33,21 +33,29 @@ li {
 	display: block;
 }
 
+li.linkContact {
+	color: green;
+}
+
 .list {
 	background: rgba(255,255,255, 0.2);
 	border-radius: 12px;
 	padding: 0 10px 0px 10px;
 }
 
-a.linkContact {
+li.linkContact a {
 	color: black;
 	display: block;
 }
 
-a.linkContact:hover {
+li.linkContact a:hover {
 	text-decoration: none;
 	color: maroon;
 	background: rgba(255,255,255, 0.4);
+}
+
+.glyphicon-star {
+	width: 20px;
 }
 
 #createContactButton {

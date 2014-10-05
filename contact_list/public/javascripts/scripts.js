@@ -4,7 +4,7 @@ var category_id;
 // this is for onLoad
 $(function(){
 
-// view for initial page load
+///// view for initial page load
 // get names from db and build lists
 function getNamesCategory(category) {
 		for (c = 0; c < categories.length; c++){
@@ -24,7 +24,7 @@ function getNamesCategory(category) {
 		for (i = 0; i < contacts.length; i++) {
 			var contactName = contacts[i]["name"];
 			// $ul.append("<li><span class='glyphicon glyphicon-star'></span> " + contactName + "</li>");
-			$ul.append("<li><a class='linkContact' href='#'><span class='glyphicon glyphicon-star'></span> " + contactName + "</a></li>");
+			$ul.append("<li class='linkContact'><a href='#'><span class='glyphicon glyphicon-star'></span> " + contactName + "</a></li>");
 		}
 	})
 };
@@ -36,13 +36,22 @@ getNamesCategory("amigos");
 
 
 // event listener for <li>s to trigger contact view
-$('.contact_list').on("click", function(){
-	console.log('anchor clicked');
+// var listlinks = document.querySelectorAll('.linkContact');
+// console.log(listlinks + ' is listlinks');
+// for (l = 0; l < listlinks.length; l++) {
+// 	listlinks[l].on("click", function(){
+// 		console.log(this);
+// 		console.log('anchor clicked');
+// 	})
+// };
 
-
+$( ".contact_list" ).on( "click", "a", function( event ) {
+    event.preventDefault();
+    console.log( $( this ).text() );
 });
 
-// to create a new contact and add to category list of names
+
+///// to create a new contact and add to category list of names
 	var createContactButton = $('#createContactButton');
 
 	createContactButton.on("click", function(e){
@@ -104,9 +113,9 @@ $('.contact_list').on("click", function(){
 
 // check new contact form for empty fields
 // ideally form should have 
-// 1) no empty fields for name, age, address, phone
-// 2) dropdown must have value other than "select a cat"
-// 3) picture will populate with random user if empty
+// 1)x no empty fields for name, age, address, phone
+// 2)x dropdown must have value other than "select a cat"
+// *** 3) picture will populate with random user if empty
 
 	function validateForm(picture) {
 		// this function will return whether a form 
