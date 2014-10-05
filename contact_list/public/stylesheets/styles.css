@@ -18,7 +18,7 @@ h1 {
 	text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	padding-top: 30px;
+	padding-top: 40px;
 }
 
 h3 {
@@ -34,6 +34,17 @@ ul {
 	background: rgba(255,255,255, 0.2);
 	border-radius: 12px;
 	padding: 0 10px 0px 10px;
+}
+
+a.linkContact {
+	color: black;
+	width: 100%;
+}
+
+a.linkContact:hover {
+	text-decoration: none;
+	color: maroon;
+	background: rgba(255,255,255, 0.4);
 }
 
 #createContactButton {

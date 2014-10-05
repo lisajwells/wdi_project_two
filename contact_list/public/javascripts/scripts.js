@@ -23,7 +23,8 @@ function getNamesCategory(category) {
 		
 		for (i = 0; i < contacts.length; i++) {
 			var contactName = contacts[i]["name"];
-			$ul.append("<li><span class='glyphicon glyphicon-star'></span> " + contactName + "</li>");
+			// $ul.append("<li><span class='glyphicon glyphicon-star'></span> " + contactName + "</li>");
+			$ul.append("<li><a class='linkContact' href='#'><span class='glyphicon glyphicon-star'></span> " + contactName + "</a></li>");
 		}
 	})
 };
