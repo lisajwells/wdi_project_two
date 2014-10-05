@@ -80,7 +80,10 @@ getNamesCategory("amigos");
 		  url: 'http://api.randomuser.me/',
 		  dataType: 'json',
 		  success: function(data){
-		    console.log(data);
+		    // console.log(data);
+		    picture = data["results"][0]["user"]["picture"]["thumbnail"];
+		  return picture;
+		  console.log(picture + ' is pic')
 		  }
 		})
 	};
@@ -99,6 +102,7 @@ getNamesCategory("amigos");
 		// this function will return whether a form 
 		// isValid, use it in a test to see whether or not 
 		// to add a contact to the db  
+		var picture = $('#newPicInput').val();
 		var inputs = document.querySelectorAll(".newFormRequired");
 		isValid = true; 
 		notEmpty = true;
@@ -112,16 +116,26 @@ getNamesCategory("amigos");
 	  	}
 	  }
 	  	console.log(notEmpty + ' notEmpty')
+
 	  // to check that "select" has chosen category
 	  var dropdown = $('#newContactDropdown');
 	  if (dropdown.val() == "Select category") {
 	  	categorySelected = false;
 	  }
-	  	console.log(categorySelected + ' categorySelected')
+
+	  // to get a random picture if none given
+	  if ($('#newPicInput').val() === '') {
+	  	getRandomPic();
+	  }
+
+	  // to return value used to determine whether to create new contact
 	  if (notEmpty == false || categorySelected == false) {
 	  	isValid = false;
 	  }
 	  return isValid; 
 	}
 
+
+
+// this is the end of the onLoad
 });

@@ -1,6 +1,7 @@
 body {
 	background: url("../images/wall_background2.jpg");
 	background-size: cover;
+	padding-bottom: 60px;
 }
 
 .center {
@@ -44,13 +45,17 @@ ul {
 }
 
 select.form-control {
+	background: rgba(255,255,255, 0.2);
 	margin-top: 16px;
 }
 
 input.form-control {
+	background: rgba(255,255,255, 0.2);
 	height: 30px;
 	padding: 4px 12px;
 	font-size: 12px;
+	color: black;
+	font-weight: 500;
 }
 
 .contact_view {
