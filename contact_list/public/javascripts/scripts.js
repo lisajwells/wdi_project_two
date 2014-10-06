@@ -26,7 +26,7 @@ function getNamesCategory(category) {
 		for (i = 0; i < contacts.length; i++) {
 			var contactName = contacts[i]["name"];
 
-			$ul.append("<li class='linkContact'><a href='#'><span class='glyphicon glyphicon-star'></span> " + contactName + "</a></li>");
+			$ul.append("<li class='linkContact'><a href='#'><span class='glyphicon glyphicon-star'></span>" + contactName + "</a></li>");
 		}
 	})
 };
@@ -37,17 +37,6 @@ getNamesCategory("amigos");
 /////
 
 
-// event listener for <li>s to trigger contact view
-
-$( ".contact_list" ).on( "click", "a", function( event ) {
-    event.preventDefault();
-    contactName = $( this ).text() ;
-		return contactName;
-
-		//call the function that finds the contact and displays its info
-		displayContact(contactName);
-});
-
 function displayContact(contactName) {
 //*** call the server and get allContacts
 	$.ajax({
@@ -55,25 +44,25 @@ function displayContact(contactName) {
 		type: 'GET'
 	}).done(function(data){
 
-	//*** with the response data, iterate and find contactName
+	// with the response data, iterate and find contactName
 		allContacts = data; 
 
 		for (x = 0; x < allContacts.length; x++){
 			if (contactName == allContacts[x]["name"]) {
 
-				// var id = allContacts[x]["id"];
-				// var name = allContacts[x]["name"];
 				var age = allContacts[x]["age"];
 				var address = allContacts[x]["address"];
 				var phone = allContacts[x]["phone_number"];
 				var pic = allContacts[x]["picture"];
 
-// find the category name given the category id
+	// find the category name given the category id
 				var categoryId = allContacts[x]["category_id"];
 				for (i = 0; i < categories.length; i++) {
-					if (categoryId == categories[i]["id"]) { // categories[x] is undefined
+					if (categoryId == categories[i]["id"]) { 
 						var category = categories[i]["name"];
 					}
+
+	// fill the contact_view div with the contact info
 				$('#contact_hed').text(contactName);
 				$('#contact_category').text(category);
 				$('#contact_pic').html("<img class='small center' src='" + pic + "'>");
@@ -84,15 +73,25 @@ function displayContact(contactName) {
 				$('#contact_phone').append(phone);
 			}
 		}
-// fill the contact_view div with the contact info and make visible
-
 	})
-// make the index_view div hidden
-
+// make the index_view div hidden and the contact_view div visible
 };
 
 // test call
-displayContact('Jose Blose');
+// displayContact('Jose Blose');
+
+// event listener for <li>s to trigger contact view
+
+$( ".contact_list" ).on( "click", "a", function( event ) {
+    event.preventDefault();
+    var contactName = $( this ).text() ;
+    console.log(contactName);
+    // console.log(typeof contactName);
+		// return contactName;
+
+		//call the function that finds the contact and displays its info
+		displayContact(contactName);
+});
 
 //
 
@@ -134,7 +133,7 @@ displayContact('Jose Blose');
 			}
 		}).done(function(data){
 
-			$ul.append("<li class='linkContact'><a href='#'><span class='glyphicon glyphicon-star'></span> " + data["name"] + "</a></li>");
+			$ul.append("<li class='linkContact'><a href='#'><span class='glyphicon glyphicon-star'></span>" + data["name"] + "</a></li>");
 
 		})
 		}
@@ -153,9 +152,6 @@ displayContact('Jose Blose');
 		  }
 		})
 	};
-// how to get a random thumbnail
-// data["results"][0]["user"]["picture"]["thumbnail"]
-
 
 
 // check new contact form for empty fields
