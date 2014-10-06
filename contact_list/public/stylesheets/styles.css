@@ -1,4 +1,5 @@
 body {
+	background-color: ##E0C266;
 	background: url("../images/wall_background2.jpg");
 	background-size: cover;
 	padding-bottom: 60px;
@@ -23,6 +24,13 @@ h1 {
 
 h3 {
 	margin: 10px;
+}
+
+img.tiny {
+	width: 20px;
+	height: 20px;
+	border-radius: 4px;
+	background-color: ##E0C266;
 }
 
 ul {
@@ -80,6 +88,11 @@ input.form-control {
 	font-weight: 500;
 }
 
-.contact_view {
-	display: none;
+div.contact_info {
+	background: rgba(255,255,255, 0.2);
+	border-radius: 12px;
+	padding: 0 10px 0px 10px;
+	color: green;
+	/*display: none;*/
 }
+

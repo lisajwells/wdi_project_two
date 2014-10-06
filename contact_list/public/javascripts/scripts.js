@@ -1,11 +1,13 @@
 var categories = [{"id":1,"name":"mariachis"},{"id":2,"name":"diablos"},{"id":3,"name":"amigos"}];
 var category_id;
+var	allContacts = [];
 
 // this is for onLoad
 $(function(){
 
 ///// view for initial page load
 // get names from db and build lists
+
 function getNamesCategory(category) {
 		for (c = 0; c < categories.length; c++){
 			if (category == categories[c]["name"]) {
@@ -23,7 +25,7 @@ function getNamesCategory(category) {
 		
 		for (i = 0; i < contacts.length; i++) {
 			var contactName = contacts[i]["name"];
-			// $ul.append("<li><span class='glyphicon glyphicon-star'></span> " + contactName + "</li>");
+
 			$ul.append("<li class='linkContact'><a href='#'><span class='glyphicon glyphicon-star'></span> " + contactName + "</a></li>");
 		}
 	})
@@ -36,22 +38,52 @@ getNamesCategory("amigos");
 
 
 // event listener for <li>s to trigger contact view
-// var listlinks = document.querySelectorAll('.linkContact');
-// console.log(listlinks + ' is listlinks');
-// for (l = 0; l < listlinks.length; l++) {
-// 	listlinks[l].on("click", function(){
-// 		console.log(this);
-// 		console.log('anchor clicked');
-// 	})
-// };
 
 $( ".contact_list" ).on( "click", "a", function( event ) {
     event.preventDefault();
-    console.log( $( this ).text() );
+    contactName = $( this ).text() ;
+		return contactName;
+
+		//call the function that finds the contact and displays its info
+		displayContact(contactName);
 });
 
+function displayContact(contactName) {
+//*** call the server and get allContacts
+	$.ajax({
+		url: '/contacts', 
+		type: 'GET'
+	}).done(function(data){
+
+	//*** with the response data, iterate and find contactName
+		allContacts = data; 
+
+		for (x = 0; x < allContacts.length; x++){
+			if (contactName == allContacts[x]["name"]) {
+				var id = allContacts[x]["id"];
+				var name = allContacts[x]["name"];
+				var age = allContacts[x]["age"];
+				var address = allContacts[x]["address"];
+				var phone = allContacts[x]["phone"];
+				var pic = allContacts[x]["picture"];
+				var category = allContacts[x]["category_id"];
+			}
+		}
+		$('#contact_hed').text(name);
+
+	})
+//*** fill the contact_view div with the contact info and make visible
+// make the index_view div hidden
+
+};
+
+// test call
+displayContact('Papa Joe');
+
+//
 
 ///// to create a new contact and add to category list of names
+
 	var createContactButton = $('#createContactButton');
 
 	createContactButton.on("click", function(e){
@@ -89,7 +121,7 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 		}).done(function(data){
 
 			$ul.append("<li class='linkContact'><a href='#'><span class='glyphicon glyphicon-star'></span> " + data["name"] + "</a></li>");
-			
+
 		})
 		}
 	});
@@ -145,7 +177,7 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 	  // to get a random picture if none given
 	  if ($('#newPicInput').val() === '') {
 	  	console.log('pic is empty');
-	  	getRandomPic();
+	  	getRandomPic(picture);
 	  }
 
 	  // to return value used to determine whether to create new contact
