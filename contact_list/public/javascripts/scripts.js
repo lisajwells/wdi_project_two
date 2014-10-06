@@ -77,10 +77,10 @@ function displayContact(contactName) {
 				$('#contact_hed').text(contactName);
 				$('#contact_category').text(category);
 
-				$('#contact_age').text(age);
-				$('#contact_address').text(address);
-				$('#contact_phone').text(phone);
 				}
+				$('#contact_age').append(age);
+				$('#contact_address').append(address);
+				$('#contact_phone').append(phone);
 			}
 		}
 // fill the contact_view div with the contact info and make visible
