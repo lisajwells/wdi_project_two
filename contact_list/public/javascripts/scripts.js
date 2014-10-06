@@ -26,7 +26,13 @@ function getNamesCategory(category) {
 		for (i = 0; i < contacts.length; i++) {
 			var contactName = contacts[i]["name"];
 
-			$ul.append("<li class='linkContact'><a href='#'><span class='glyphicon glyphicon-star'></span>" + contactName + "</a></li>");
+			// we need the contact obj id's in the db so that... 
+			var contactId = contacts[i]["id"]; 
+
+																					// we can add it to the li as a DOM id so  
+																					// when we go to delete it in the contact view 
+			$ul.append("<li class='linkContact' id=" + contactId  + 
+				"><a href='#'><span class='glyphicon glyphicon-star'></span>" + contactName + "</a></li>");
 		}
 	})
 };
@@ -37,8 +43,8 @@ getNamesCategory("amigos");
 /////
 
 
-function displayContact(contactName) {
-//*** call the server and get allContacts
+function displayContact(contactName) {	
+	//*** call the server and get allContacts
 	$.ajax({
 		url: '/contacts', 
 		type: 'GET'
@@ -47,8 +53,12 @@ function displayContact(contactName) {
 	// with the response data, iterate and find contactName
 		allContacts = data; 
 
-		for (x = 0; x < allContacts.length; x++){
+		for (var x = 0; x < allContacts.length; x++){
 			if (contactName == allContacts[x]["name"]) {
+				var contactId = allContacts[x]["id"]; 
+				// the contact view also needs an id 
+				// so we can send the delete request to the server 
+				$('div.contact_view').attr("id", contactId);
 
 				var age = allContacts[x]["age"];
 				var address = allContacts[x]["address"];
@@ -171,6 +181,34 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 	 	$('div.contact_view').addClass('noshow');
 	 	$('div.index_view').removeClass('noshow');
 
+	});
+
+
+///// button to delete a contact
+	var contactDeleteButton = $('#delete_contact_btn');
+
+	contactDeleteButton.on("click", function(e){
+		// do you really need this? Try commenting out. 
+		// if so, why? 
+		e.preventDefault();
+
+		/// get the contact id Clayton embedded in 
+		// the contact_view div as the div's id 
+		var contactId = e.currentTarget.parentNode.parentNode.parentNode.id;	
+
+		// remove the list item corresponding to the contact we're going to delete 
+		$("li#" + contactId).remove();  
+
+		// reload the list categories view 
+		$('div.contact_view').addClass('noshow');
+	 	$('div.index_view').removeClass('noshow');
+
+	 	// send a delete request to the server, 
+	 	// using the id of the user 
+		$.ajax({
+			url: "/contacts/" + contactId,
+			method: 'DELETE'
+		})
 	});
 
 
