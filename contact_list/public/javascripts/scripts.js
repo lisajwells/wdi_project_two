@@ -66,7 +66,6 @@ function displayContact(contactName) {
 				$('#contact_hed').text(contactName);
 				$('#contact_category').text(category);
 				$('#contact_pic').html("<img class='small center' src='" + pic + "'>");
-
 				}
 				$('#contact_age').html("<b>age: </b>" + age);
 				$('#contact_address').html("<b>address: </b>" + address);
@@ -76,10 +75,10 @@ function displayContact(contactName) {
 	})
 
 // make the index_view div hidden and the contact_view div visible
+ 	$('div.contact_view').removeClass('noshow');
+ 	$('div.index_view').addClass('noshow');
 };
 
-// test call
-// displayContact('Jose Blose');
 
 // event listener for <li>s to trigger contact view
 
