@@ -60,25 +60,38 @@ function displayContact(contactName) {
 
 		for (x = 0; x < allContacts.length; x++){
 			if (contactName == allContacts[x]["name"]) {
-				var id = allContacts[x]["id"];
-				var name = allContacts[x]["name"];
+
+				// var id = allContacts[x]["id"];
+				// var name = allContacts[x]["name"];
 				var age = allContacts[x]["age"];
 				var address = allContacts[x]["address"];
-				var phone = allContacts[x]["phone"];
+				var phone = allContacts[x]["phone_number"];
 				var pic = allContacts[x]["picture"];
-				var category = allContacts[x]["category_id"];
+
+// find the category name given the category id
+				var categoryId = allContacts[x]["category_id"];
+				for (i = 0; i < categories.length; i++) {
+					if (categoryId == categories[i]["id"]) { // categories[x] is undefined
+						var category = categories[i]["name"];
+					}
+				$('#contact_hed').text(contactName);
+				$('#contact_category').text(category);
+
+				$('#contact_age').text(age);
+				$('#contact_address').text(address);
+				$('#contact_phone').text(phone);
+				}
 			}
 		}
-		$('#contact_hed').text(name);
+// fill the contact_view div with the contact info and make visible
 
 	})
-//*** fill the contact_view div with the contact info and make visible
 // make the index_view div hidden
 
 };
 
 // test call
-displayContact('Papa Joe');
+displayContact('Jose Blose');
 
 //
 
