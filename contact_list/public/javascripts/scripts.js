@@ -74,6 +74,7 @@ function displayContact(contactName) {
 			}
 		}
 	})
+
 // make the index_view div hidden and the contact_view div visible
 };
 
@@ -92,8 +93,30 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 		//call the function that finds the contact and displays its info
 		displayContact(contactName);
 });
-
 //
+
+
+// click to populate picture url field with random pic		
+	var randomButton = $('#random_button');
+		randomButton.on("click", function(e){
+		e.preventDefault();
+
+		$.ajax({
+		  url: 'http://api.randomuser.me/',
+		  dataType: 'json',
+		  success: function(data){
+
+		    var picture = data["results"][0]["user"]["picture"]["thumbnail"];
+		    var pictureInput = $('#newPicInput');
+		    
+		  	//add it to the dom here
+		    pictureInput.val(picture);
+		  	console.log(picture);
+		  }
+		})
+		});
+
+
 
 ///// to create a new contact and add to category list of names
 
@@ -111,10 +134,9 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 		var age = $('#newAgeInput').val();
 		var address = $('#newAddressInput').val();
 		var phone_number = $('#newPhoneInput').val();
-		var picture = $('#newPicInput').val();
 
 		// don't create the contact unless it's right
-		validateForm();
+		var isValid = validateForm();
 		if (isValid == false) {
 			alert('Please fill out all the fields');
 		}
@@ -132,27 +154,13 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 				category_id: category_id
 			}
 		}).done(function(data){
-
+			
 			$ul.append("<li class='linkContact'><a href='#'><span class='glyphicon glyphicon-star'></span>" + data["name"] + "</a></li>");
 
 		})
 		}
 	});
 /////
-
-	function getRandomPic(picture) {
-		$.ajax({
-		  url: 'http://api.randomuser.me/',
-		  dataType: 'json',
-		  success: function(data){
-		    // console.log(data);
-		    picture = data["results"][0]["user"]["picture"]["thumbnail"];
-		  return picture;
-		  console.log(picture + ' is pic')
-		  }
-		})
-	};
-
 
 // check new contact form for empty fields
 // ideally form should have 
@@ -166,7 +174,7 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 		// to add a contact to the db  
 		var picture = $('#newPicInput').val();
 		var inputs = document.querySelectorAll(".newFormRequired");
-		isValid = true; 
+		var isValid = true; 
 		notEmpty = true;
 		categorySelected = true;
 		
@@ -182,12 +190,6 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 	  var dropdown = $('#newContactDropdown');
 	  if (dropdown.val() == "Select category") {
 	  	categorySelected = false;
-	  }
-
-	  // to get a random picture if none given
-	  if ($('#newPicInput').val() === '') {
-	  	console.log('pic is empty');
-	  	getRandomPic(picture);
 	  }
 
 	  // to return value used to determine whether to create new contact
