@@ -68,9 +68,9 @@ function displayContact(contactName) {
 				$('#contact_pic').html("<img class='small center' src='" + pic + "'>");
 
 				}
-				$('#contact_age').append(age);
-				$('#contact_address').append(address);
-				$('#contact_phone').append(phone);
+				$('#contact_age').html("<b>age: </b>" + age);
+				$('#contact_address').html("<b>address: </b>" + address);
+				$('#contact_phone').html("<b>phone: </b>" + phone);
 			}
 		}
 	})
@@ -108,14 +108,13 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 
 		    var picture = data["results"][0]["user"]["picture"]["thumbnail"];
 		    var pictureInput = $('#newPicInput');
-		    
+
 		  	//add it to the dom here
 		    pictureInput.val(picture);
 		  	console.log(picture);
 		  }
 		})
-		});
-
+	});
 
 
 ///// to create a new contact and add to category list of names
@@ -134,6 +133,7 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 		var age = $('#newAgeInput').val();
 		var address = $('#newAddressInput').val();
 		var phone_number = $('#newPhoneInput').val();
+		var picture = $('#newPicInput').val();
 
 		// don't create the contact unless it's right
 		var isValid = validateForm();
