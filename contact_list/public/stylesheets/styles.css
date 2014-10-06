@@ -1,7 +1,7 @@
 body {
-	background-color: ##E0C266;
-	background: url("../images/wall_background2.jpg");
-	background-size: cover;
+	background-color: #ce9568; 
+	background-image: url("../images/wall_background2.jpg");
+	background-size: cover; 
 	padding-bottom: 60px;
 }
 

@@ -44,7 +44,7 @@ getNamesCategory("amigos");
 
 
 function displayContact(contactName) {	
-	//*** call the server and get allContacts
+	// call the server and get allContacts
 	$.ajax({
 		url: '/contacts', 
 		type: 'GET'
@@ -168,6 +168,13 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 
 		})
 		}
+		$('#newNameInput').val('');
+		$('#newAgeInput').val('');
+		$('#newAddressInput').val('');
+		$('#newPhoneInput').val('');
+		$('#newPicInput').val('');
+		$('#newContactDropdown').val('Select category');
+
 	});
 /////
 
@@ -189,7 +196,7 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 
 	contactDeleteButton.on("click", function(e){
 		// do you really need this? Try commenting out. 
-		// if so, why? 
+		// if so, why? --by Clayton
 		e.preventDefault();
 
 		/// get the contact id Clayton embedded in 
