@@ -76,6 +76,7 @@ function displayContact(contactName) {
 					}
 				$('#contact_hed').text(contactName);
 				$('#contact_category').text(category);
+				$('#contact_img').text(pic);
 
 				}
 				$('#contact_age').append(age);

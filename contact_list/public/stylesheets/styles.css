@@ -34,11 +34,13 @@ img.tiny {
 }
 
 img.small {
-	width: 40px;
-	height: 40px;
+	width: 60px;
+	height: 60px;
 	border-radius: 8px;
-	border: 2px #CC9900;
+	border: 2px black;
 	background-color: #E0C266;
+	margin: 0 auto 6px auto;
+	display: block;
 }
 
 ul {
@@ -99,7 +101,7 @@ input.form-control {
 div.contact_info {
 	background: rgba(255,255,255, 0.2);
 	border-radius: 12px;
-	padding: 4px 10px 4px 10px;
+	padding: 6px 10px 2px 10px;
 	/*display: none;*/
 }
 
