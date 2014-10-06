@@ -34,15 +34,15 @@ img.tiny {
 	width: 20px;
 	height: 20px;
 	border-radius: 4px;
-	background-color: #E0C266;
+	background-color: #ce9568;
 }
 
 img.small {
 	width: 60px;
 	height: 60px;
 	border-radius: 8px;
-	border: 2px black;
-	background-color: #E0C266;
+	border: 2px solid #8e674a;
+	background-color: #ce9568;
 	margin: 0 auto 6px auto;
 	display: block;
 }
@@ -105,7 +105,7 @@ input.form-control {
 div.contact_info {
 	background: rgba(255,255,255, 0.2);
 	border-radius: 12px;
-	padding: 6px 10px 2px 10px;
-	/*display: none;*/
+	padding: 6px 10px 10px 10px;
+	margin-top: 10px;
 }
 

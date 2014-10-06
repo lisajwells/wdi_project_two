@@ -161,11 +161,20 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 	});
 /////
 
-// check new contact form for empty fields
-// ideally form should have 
-// 1)x no empty fields for name, age, address, phone
-// 2)x dropdown must have value other than "select a cat"
-// *** 3) picture will populate with random user if empty
+///// button to go back to index view from contact view
+	var contactExitButton = $('#exit_contact_btn');
+
+	contactExitButton.on("click", function(e){
+		e.preventDefault();
+
+		// make the contact_view div hidden and the index_view div visible
+	 	$('div.contact_view').addClass('noshow');
+	 	$('div.index_view').removeClass('noshow');
+
+	});
+
+
+///// form validation
 
 	function validateForm(picture) {
 		// this function will return whether a form 
