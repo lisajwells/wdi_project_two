@@ -1,0 +1,132 @@
+body {
+	background-color: #ce9568; 
+	background-image: url("../images/wall_background2.jpg");
+	background-size: cover; 
+	padding-bottom: 60px;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.noshow {
+	display:none;
+}
+
+h1 {
+	color: maroon;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding-top: 50px;
+}
+
+h3 {
+	margin: 10px;
+}
+
+img.tiny {
+	width: 20px;
+	height: 20px;
+	border-radius: 4px;
+	background-color: #ce9568;
+}
+
+img.small {
+	width: 60px;
+	height: 60px;
+	border-radius: 8px;
+	border: 2px solid #8e674a;
+	background-color: #ce9568;
+	margin: 0 auto 6px auto;
+	display: block;
+}
+
+ul {
+	padding-left: 0;
+	list-style-type: none;
+}
+li {
+	display: block;
+}
+
+li.linkContact {
+
+}
+
+div.list {
+	background: rgba(255,255,255, 0.2);
+	border-radius: 12px;
+	padding: 0 10px 0px 10px;
+}
+
+li.linkContact a {
+	color: black;
+	display: block;
+}
+
+li.linkContact a:hover {
+	text-decoration: none;
+	color: maroon;
+	background: rgba(255,255,255, 0.4);
+}
+
+.glyphicon-star {
+	width: 20px;
+}
+
+#createContactButton {
+	margin-top: 10px;
+}
+
+.form-group {
+	margin-bottom: 6px;
+}
+
+select.form-control {
+	background: rgba(255,255,255, 0.2);
+	margin-top: 16px;
+}
+
+input.form-control {
+	background: rgba(255,255,255, 0.2);
+	height: 30px;
+	padding: 4px 12px;
+	font-size: 12px;
+	color: black;
+	font-weight: 500;
+}
+
+div.contact_info {
+	background: rgba(255,255,255, 0.2);
+	border-radius: 12px;
+	padding: 6px 10px 10px 10px;
+	margin-top: 10px;
+}
+
+span.glyphicon-search {
+	width: 30px;
+	background: rgba(255,255,255, 0.2);
+}
+
+#search {
+	background: rgba(255,255,255, 0.2);
+}
+
+#search_btn {
+	display: inline;
+}
+
+#search_form {
+	background: rgba(255,255,255, 0.2);
+}
+
+div.edit_view {
+	border: 2px solid maroon;
+}
+
