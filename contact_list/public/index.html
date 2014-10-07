@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="/stylesheets/styles.css">
 	<script src="/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./javascripts/scripts.js"></script>
-
+	<link rel="icon" type="image/png" href="/images/skull16.ico" />
 </head>
 <body>
 	<div class="container">
@@ -43,6 +43,16 @@
 
 		<!-- the new contact form -->
 			<div class="col-md-6 col-md-offset-1 new_contact">
+
+				<div id="edit_buttons">
+				<h4>Search</h4>
+					<form id="search_form">
+						<span class='glyphicon glyphicon-search'>
+							<input type="search" name="search" id="search"> 
+							<button class="btn btn-xs" id="search_btn">Search</button>
+					</form>
+				</div>
+
 				<h4>Add a Contact</h4>
 				<form role="form" id="new_contact_form">
 				  
@@ -112,6 +122,32 @@
 		</div>
 	</div>
 	<!-- ^^^^^^ end of indiviual contact view -->
+
+	<!-- ^^^^^^ edit contact view -->
+	<div class="col-md-12 col-md-offset-6 noshow edit_view">
+		<header>
+			<row>
+				<!-- // the contactName goes in the h1 -->
+				<h1 id="contact_hed"></h1>
+				<h3 id="contact_category" class="center"></h3>
+				<div id="contact_pic"><img class="small center" src=""><input type="text" class="form-control editPic" id="editPicInput" placeholder="Pic url"></div>
+			</row>
+		</header>
+
+		<div class="edit_contact_info">
+		<row>
+			<p id="contact_age"><b>age: </b></p>
+			<p id="contact_address"><b>address: </b></p>
+			<p id="contact_phone"><b>phone: </b></p>
+		</row>
+		<row>
+			<button id="edit_contact_btn" class="btn-sm">Submit Changes</button>
+			<button id="edit_cancel_btn" class="btn-sm">Cancel Changes</button>
+		</row>
+		</div>
+	</div>
+	<!-- ^^^^^^ end of edit contact view -->
+
 	</div> 
 	<!-- end of bootstrap container -->
 </body>

@@ -59,7 +59,7 @@ li.linkContact {
 
 }
 
-.list {
+div.list {
 	background: rgba(255,255,255, 0.2);
 	border-radius: 12px;
 	padding: 0 10px 0px 10px;
@@ -107,5 +107,26 @@ div.contact_info {
 	border-radius: 12px;
 	padding: 6px 10px 10px 10px;
 	margin-top: 10px;
+}
+
+span.glyphicon-search {
+	width: 30px;
+	background: rgba(255,255,255, 0.2);
+}
+
+#search {
+	background: rgba(255,255,255, 0.2);
+}
+
+#search_btn {
+	display: inline;
+}
+
+#search_form {
+	background: rgba(255,255,255, 0.2);
+}
+
+div.edit_view {
+	border: 2px solid maroon;
 }
 

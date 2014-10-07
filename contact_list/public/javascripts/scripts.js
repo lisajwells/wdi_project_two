@@ -29,8 +29,8 @@ function getNamesCategory(category) {
 			// we need the contact obj id's in the db so that... 
 			var contactId = contacts[i]["id"]; 
 
-																					// we can add it to the li as a DOM id so  
-																					// when we go to delete it in the contact view 
+											// we can add it to the li as a DOM id so  
+											// when we go to delete it in the contact view 
 			$ul.append("<li class='linkContact' id=" + contactId  + 
 				"><a href='#'><span class='glyphicon glyphicon-star'></span>" + contactName + "</a></li>");
 		}
@@ -87,6 +87,17 @@ function displayContact(contactName) {
 // make the index_view div hidden and the contact_view div visible
  	$('div.contact_view').removeClass('noshow');
  	$('div.index_view').addClass('noshow');
+
+// ***** put event listener here for edit button
+var editContactButton = $('#edit_contact_btn');
+
+editContactButton.on("click", function(e){
+	e.preventDefault();
+
+	console.log('edit button is happening')
+
+})
+
 };
 
 
@@ -132,6 +143,7 @@ $( ".contact_list" ).on( "click", "a", function( event ) {
 
 	createContactButton.on("click", function(e){
 		e.preventDefault();
+
 		var category = $('#newContactDropdown').val();
 		for (c = 0; c < categories.length; c++){
 			if (category == categories[c]["name"]) {
