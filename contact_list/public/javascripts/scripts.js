@@ -43,6 +43,23 @@ getNamesCategory("amigos");
 /////
 
 
+///// to edit a contact, put it to the db, and display the contact view with the edited content
+
+// call this in the event listener around line 99
+
+function editContact(contactName, category, age, address, phone){
+ 	$('div.contact_view').addClass('noshow');
+ 	$('div.edit_view').removeClass('noshow');
+
+		$('#edit_contact_hed').text(contactName);
+		$('#edit_contact_category').text(category);
+		// $('#edit_contact_pic').html("<img class='small center' src='" + pic + "'>");
+		$('#edit_contact_age').html("<b>age: </b>" + age);
+		$('#edit_contact_address').html("<b>address: </b>" + address);
+		$('#edit_contact_phone').html("<b>phone: </b>" + phone);
+			
+}
+
 function displayContact(contactName) {	
 	// call the server and get allContacts
 	$.ajax({
@@ -88,17 +105,21 @@ function displayContact(contactName) {
  	$('div.contact_view').removeClass('noshow');
  	$('div.index_view').addClass('noshow');
 
-// ***** put event listener here for edit button
+// put event listener here for edit button
 var editContactButton = $('#edit_contact_btn');
 
 editContactButton.on("click", function(e){
 	e.preventDefault();
 
 	console.log('edit button is happening')
-
+	editContact(contactName, category, age, address, phone);
 })
 
 };
+
+
+
+
 
 
 // event listener for <li>s to trigger contact view
